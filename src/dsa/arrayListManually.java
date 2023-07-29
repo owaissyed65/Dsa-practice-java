@@ -44,6 +44,37 @@ public class arrayListManually {
         this.arr[this.currentIndex] = 0;
     }
 
+    public int max() {
+        int result = this.arr[0];
+        for (int i = 1; i < this.currentIndex; i++) {
+            if (this.arr[i] > result) {
+                result = this.arr[i];
+            }
+        }
+        return result;
+    }
+
+    public int min() {
+        int result = this.arr[0];
+        for (int i = 1; i < this.currentIndex; i++) {
+            if (this.arr[i] < result) {
+                result = this.arr[i];
+            }
+        }
+        return result;
+    }
+
+//    reverse an array
+    public void reverse() {
+//time complexity is n/2
+//and space complexity is o(1)
+        for (int i = 0; i < this.currentIndex / 2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[this.currentIndex - i - 1];
+            arr[this.currentIndex - i - 1] = temp;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
@@ -51,7 +82,11 @@ public class arrayListManually {
         for (int i = 0; i < this.currentIndex; i++) {
             str.append(this.arr[i]).append(",");
         }
-        str.append("\b").append("\b").append("]");
+        str.append("\b").append("]");
         return str.toString();
+    }
+//    getter method of currentIndex
+    protected int getCurrentIndex(){
+        return this.currentIndex;
     }
 }
